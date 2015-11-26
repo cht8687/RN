@@ -10,38 +10,14 @@ var {
   StyleSheet,
   Text,
   View,
-  Navigator,
-  NavigatorIOS,
 } = React;
-
 var HomePage = require('./HomePage');
-var _navigator;
+
 
 var IDfy2 = React.createClass({
-
-
-  RouteMapper: function(route, navigationOperations, onComponentRef) {
-    _navigator = navigationOperations;
-    if (route.name === 'home') {
-      return (
-        <View style={styles.container}>
-          <HomePage navigator={navigationOperations}/>
-        </View>
-      );
-    } 
-  },
-
-
   render: function() {
-
-    var initialRoute = {name: 'home'};
-
     return (
-      <Navigator
-        style={styles.container}
-        initialRoute={initialRoute}
-        renderScene={this.RouteMapper}
-      />
+      <HomePage />
     );
   }
 });
