@@ -10,23 +10,38 @@ var {
   StyleSheet,
   Text,
   View,
+  Navigator,
+  NavigatorIOS,
 } = React;
 
+var HomePage = require('./HomePage');
+var _navigator;
+
 var IDfy2 = React.createClass({
+
+
+  RouteMapper: function(route, navigationOperations, onComponentRef) {
+    _navigator = navigationOperations;
+    if (route.name === 'home') {
+      return (
+        <View style={styles.container}>
+          <HomePage navigator={navigationOperations}/>
+        </View>
+      );
+    } 
+  },
+
+
   render: function() {
+
+    var initialRoute = {name: 'home'};
+
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      <Navigator
+        style={styles.container}
+        initialRoute={initialRoute}
+        renderScene={this.RouteMapper}
+      />
     );
   }
 });
