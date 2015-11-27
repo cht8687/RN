@@ -10,13 +10,18 @@ const {
   View,
   TextInput,
   TouchableHighlight,
-  Component
+  Component,
+  ActivityIndicatorIOS
 } = React;
 
 export default class LoginPage extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      showProgress: false
+    }
   }
   
   render(){
@@ -40,12 +45,15 @@ export default class LoginPage extends Component {
               Login in
           </Text>
         </TouchableHighlight>
+        <ActivityIndicatorIOS 
+          animating={this.state.showProgress}
+        />
       </View>
     );
   }
 
   onLoginPressed() {
-    console.log("Attempt to login");
+    this.setState({showProgress: true})
   }
 }
 
