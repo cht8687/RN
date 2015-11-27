@@ -7,7 +7,8 @@ const {
   StyleSheet,
   Text,
   View,
-  TextInput
+  TextInput,
+  TouchableHighlight
 } = React;
 
 const LoginPage = React.createClass({
@@ -27,7 +28,16 @@ const LoginPage = React.createClass({
         />
         <TextInput style={styles.input} 
           placeholder="Password"
+          secureTextEntry="true"
         />
+        <TouchableHighlight
+          style={styles.loginbutton}
+          >
+          <Text
+            style={styles.loginText}> 
+              Login in
+          </Text>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -39,7 +49,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     paddingTop: 40,
-    backgroundColor: '#F5FCFF'
+    backgroundColor: '#F5FCFF',
+    padding: 10
   },
   logo: {
     
@@ -55,6 +66,18 @@ const styles = StyleSheet.create({
     padding: 4,
     fontSize: 18,
     borderWidth:1
+  },
+  loginbutton: {
+    height: 50,
+    backgroundColor: '#E76934',
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    marginTop: 10
+  },
+  loginText: {
+    fontSize: 22,
+    color: '#FFF',
+    alignSelf: 'center'
   }
 });
 
