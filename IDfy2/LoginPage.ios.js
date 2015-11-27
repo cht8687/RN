@@ -7,6 +7,7 @@ const {
   StyleSheet,
   Text,
   View,
+  TextInput
 } = React;
 
 const LoginPage = React.createClass({
@@ -21,6 +22,12 @@ const LoginPage = React.createClass({
       <View style={styles.container}>
         <Image style={styles.logo}
           source={require('image!infotrack-logo')} />
+        <TextInput style={styles.input} 
+          placeholder="Username"
+        />
+        <TextInput style={styles.input} 
+          placeholder="Password"
+        />
       </View>
     );
   }
@@ -42,6 +49,13 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  input: {
+    height: 50,
+    marginTop: 10,
+    padding: 4,
+    fontSize: 18,
+    borderWidth:1
+  }
 });
 
 module.exports = LoginPage;

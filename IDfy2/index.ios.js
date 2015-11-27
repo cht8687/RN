@@ -20,6 +20,6 @@ const IDfy2 = React.createClass({
       <LoginPage />
     );
   }
-});
+});  
 
 AppRegistry.registerComponent('IDfy2', () => IDfy2);
