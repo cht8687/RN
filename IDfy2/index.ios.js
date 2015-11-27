@@ -4,41 +4,22 @@
  */
 'use strict';
 
-var React = require('react-native');
-var {
+const React = require('react-native');
+const {
   AppRegistry,
   StyleSheet,
   Text,
   View,
 } = React;
-var HomePage = require('./HomePage');
+const LoginPage = require('./LoginPage');
 
 
-var IDfy2 = React.createClass({
+const IDfy2 = React.createClass({
   render: function() {
     return (
-      <HomePage />
+      <LoginPage />
     );
   }
-});
-
-var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
 });
 
 AppRegistry.registerComponent('IDfy2', () => IDfy2);

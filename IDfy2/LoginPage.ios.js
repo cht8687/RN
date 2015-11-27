@@ -1,7 +1,7 @@
 'use strict';
 
-var React = require('react-native');
-var {
+const React = require('react-native');
+const {
   AsyncStorage,
   Image,
   StyleSheet,
@@ -9,7 +9,7 @@ var {
   View,
 } = React;
 
-var HomePage = React.createClass({
+const LoginPage = React.createClass({
   getInitialState: function() {
     return ({
       theme: null,
@@ -19,26 +19,23 @@ var HomePage = React.createClass({
   render: function() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to Home Page
-        </Text>
+        <Image style={styles.logo}
+          source={require('image!infotrack-logo')} />
       </View>
     );
   }
 
 });
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  logo: {
+    
   },
   instructions: {
     textAlign: 'center',
@@ -47,4 +44,4 @@ var styles = StyleSheet.create({
   },
 });
 
-module.exports = HomePage;
+module.exports = LoginPage;
