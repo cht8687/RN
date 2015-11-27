@@ -4,22 +4,25 @@
  */
 'use strict';
 
-const React = require('react-native');
+import React from 'react-native';
+
 const {
   AppRegistry,
   StyleSheet,
   Text,
   View,
+  Component
 } = React;
+
 const LoginPage = require('./LoginPage');
 
+class IDfy2 extends Component {
 
-const IDfy2 = React.createClass({
-  render: function() {
+  render() {
     return (
       <LoginPage />
     );
   }
-});  
+}
 
 AppRegistry.registerComponent('IDfy2', () => IDfy2);

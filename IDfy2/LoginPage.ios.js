@@ -1,6 +1,7 @@
 'use strict';
 
-const React = require('react-native');
+import React from 'react-native';
+
 const {
   AsyncStorage,
   Image,
@@ -23,10 +24,10 @@ export default class LoginPage extends Component {
       <View style={styles.container}>
         <Image style={styles.logo}
           source={require('image!infotrack-logo')} />
-        <TextInput style={styles.input} 
+        <TextInput style={styles.inputusername} 
           placeholder="Username"
         />
-        <TextInput style={styles.input} 
+        <TextInput style={styles.inputpassword} 
           placeholder="Password"
           secureTextEntry={true}
         />
@@ -41,7 +42,6 @@ export default class LoginPage extends Component {
       </View>
     );
   }
-
 }
 
 const styles = StyleSheet.create({
@@ -50,30 +50,43 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 40,
     backgroundColor: '#F5FCFF',
-    padding: 10
+    padding: 20
   },
+
   logo: {
     
   },
+
   instructions: {
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
   },
-  input: {
+
+  inputusername: {
+    height: 50,
+    marginTop: 30,
+    padding: 4,
+    fontSize: 18,
+    borderWidth:1
+  },
+
+  inputpassword: {
     height: 50,
     marginTop: 10,
     padding: 4,
     fontSize: 18,
     borderWidth:1
   },
+
   loginbutton: {
     height: 50,
     backgroundColor: '#E76934',
     alignSelf: 'stretch',
     justifyContent: 'center',
-    marginTop: 10
+    marginTop: 30
   },
+
   loginText: {
     fontSize: 22,
     color: '#FFF',
