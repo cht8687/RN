@@ -33,6 +33,7 @@ export default class LoginPage extends Component {
         />
         <TouchableHighlight
           style={styles.loginbutton}
+          onPress={this.onLoginPressed.bind(this)}
           >
           <Text
             style={styles.loginText}> 
@@ -41,6 +42,10 @@ export default class LoginPage extends Component {
         </TouchableHighlight>
       </View>
     );
+  }
+
+  onLoginPressed() {
+    console.log("Attempt to login");
   }
 }
 
