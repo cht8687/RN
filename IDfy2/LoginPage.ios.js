@@ -8,17 +8,17 @@ const {
   Text,
   View,
   TextInput,
-  TouchableHighlight
+  TouchableHighlight,
+  Component
 } = React;
 
-const LoginPage = React.createClass({
-  getInitialState: function() {
-    return ({
-      theme: null,
-    });
-  },
+export default class LoginPage extends Component {
+
+  constructor(props) {
+    super(props);
+  }
   
-  render: function() {
+  render(){
     return (
       <View style={styles.container}>
         <Image style={styles.logo}
@@ -28,7 +28,7 @@ const LoginPage = React.createClass({
         />
         <TextInput style={styles.input} 
           placeholder="Password"
-          secureTextEntry="true"
+          secureTextEntry={true}
         />
         <TouchableHighlight
           style={styles.loginbutton}
@@ -42,7 +42,7 @@ const LoginPage = React.createClass({
     );
   }
 
-});
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -80,5 +80,3 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   }
 });
-
-module.exports = LoginPage;
