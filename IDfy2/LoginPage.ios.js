@@ -54,7 +54,16 @@ export default class LoginPage extends Component {
   }
 
   onLoginPressed() {
-    this.setState({showProgress: true})
+    this.setState({showProgress: true});
+
+    fetch('https://api.github.com/search/repositories?q=react')
+    .then((response) => {
+      return response.json();
+    })
+    .then((results) => {
+      console.log(results);
+      this.setState({showProgress: false});
+    })
   }
 }
 
