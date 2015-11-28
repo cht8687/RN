@@ -45,9 +45,13 @@ export default class LoginPage extends Component {
               Login in
           </Text>
         </TouchableHighlight>
+
         <ActivityIndicatorIOS 
           animating={this.state.showProgress}
+          size='large'
+          style={styles.indicator}
         />
+
       </View>
     );
   }
@@ -104,5 +108,10 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: '#FFF',
     alignSelf: 'center'
+  },
+
+  indicator: {
+    marginTop: 20
   }
+
 });
