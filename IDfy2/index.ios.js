@@ -4,17 +4,13 @@
  */
 'use strict';
 
-import React from 'react-native';
-
-const {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Component
-} = React;
-
-const LoginPage = require('./LoginPage');
+import React, { AppRegistry, 
+  StyleSheet, 
+  Text, 
+  View, 
+  Component 
+} from 'react-native';
+import LoginPage from './LoginPage';
 
 class IDfy2 extends Component {
 

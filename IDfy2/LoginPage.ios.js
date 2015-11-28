@@ -1,9 +1,6 @@
 'use strict';
 
-import React from 'react-native';
-
-const {
-  AsyncStorage,
+import React, { AsyncStorage,
   Image,
   StyleSheet,
   Text,
@@ -12,7 +9,7 @@ const {
   TouchableHighlight,
   Component,
   ActivityIndicatorIOS
-} = React;
+} from 'react-native';
 
 export default class LoginPage extends Component {
 
