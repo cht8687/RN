@@ -10,15 +10,7 @@ import React, { AppRegistry,
   View, 
   Component 
 } from 'react-native';
-import LoginPage from './LoginPage';
+import IDfy2 from './root';
 
-class IDfy2 extends Component {
-
-  render() {
-    return (
-      <LoginPage />
-    );
-  }
-}
 
 AppRegistry.registerComponent('IDfy2', () => IDfy2);
