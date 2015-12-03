@@ -2,14 +2,19 @@
 import React, { AppRegistry, 
   Component 
 } from 'react-native';
-import LoginPage from './LoginPage';
+import App from 'src/containers/app';
+import { Provider } from 'react-redux/native';
+import configureStore from './store/configure-store';
 
+const store = configureStore()
 
 export default class IDfy2 extends Component {
 
   render() {
     return (
-      <LoginPage />
-    );
+      <Provider store={store}>
+        {() => <App />}
+      </Provider>
+    )
   }
 }
