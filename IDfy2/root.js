@@ -2,7 +2,7 @@
 import React, { AppRegistry, 
   Component 
 } from 'react-native';
-import App from 'src/containers/app';
+import App from './containers/app';
 import { Provider } from 'react-redux/native';
 import configureStore from './store/configure-store';
 
