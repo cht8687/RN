@@ -4,7 +4,8 @@ import React, {
   Component,
   View,
   StyleSheet,
-  PropTypes
+  PropTypes,
+  Text
 } from 'react-native'
 import { connect } from 'react-redux/native'
 import { bindActionCreators } from 'redux';
@@ -33,7 +34,9 @@ export default class App extends Component {
 
     return (
       <View style={styles.container}>
-        Hellow Native
+        <Text>
+          TrackWork View
+        </Text>
       </View>
     )
   }
