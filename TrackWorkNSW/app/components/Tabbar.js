@@ -24,8 +24,8 @@ export default class Tabbar extends Component {
   }
 
   onPress (tab) {
-    // const { actions } = this.props;
-    // actions.changeTab(tab);
+    const { actions } = this.props;
+    actions.changeTab(tab);
   }
 
   _renderContent(color: string, pageText: string, num?: number) {
@@ -38,14 +38,14 @@ export default class Tabbar extends Component {
   }
 
   render () {
-    // const { tab } = this.props;
+    const { tab } = this.props;
 
     return (
       <TabBarIOS
         tintColor="white"
         barTintColor="darkslateblue">
         <TabBarIOS.Item
-          title="Blue Tab"
+          systemIcon="featured"
           icon={{uri: base64Icon, scale: 3}}
           selected={this.state.selectedTab === 'blueTab'}
           onPress={() => {
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
 })
 
 Tabbar.propTypes = {
+  actions: PropTypes.object,
   tab: PropTypes.string
 }
 

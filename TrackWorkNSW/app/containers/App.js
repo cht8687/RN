@@ -6,31 +6,35 @@ import React, {
   StyleSheet,
   PropTypes,
   Text
-} from 'react-native';
-import { connect } from 'react-redux/native';
+} from 'react-native'
+import { connect } from 'react-redux/native'
 import { bindActionCreators } from 'redux';
 import allActions from '../actions';
-import { Tabbar } from '../components/Tabbar';
+import Tabbar from '../components/Tabbar';
 
 
 export default class App extends Component {
 
-  constructor(props) {
+  constructor (props) {
     super(props);
+    this.state = {
+      tab: null
+    };
   }
 
-  componentWillReceiveProps(props) {
+  componentWillReceiveProps (props) {
     const { application } = props;
     this.setState({
       tab: application.tab
     })
   }
 
-  render() {
-
+  render () {
+    const { tab } = this.state;
+    const { actions } = this.props;
     return (
       <View style={styles.container}>
-        <Tabbar tab={'Live'} />
+        <Tabbar tab={'game'} actions={actions}/>
       </View>
     )
   }
@@ -43,34 +47,24 @@ const styles = StyleSheet.create({
 })
 
 App.propTypes = {
-  tab: PropTypes.string
+  actions: PropTypes.object
 }
 
-export default connect(state => {
+
+function mapStateToProps(state) {
   return {
     application: state.application
-  }
-}, dispatch => {
+  };
+}
+
+function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(allActions, dispatch)
-  }
-})(App)
+  };
+}
 
 
-// function mapStateToProps(state) {
-//   return {
-//     application: state.application
-//   };
-// }
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     actions: bindActionCreators(allActions, dispatch)
-//   };
-// }
-
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(App)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
