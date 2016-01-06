@@ -28,9 +28,9 @@ export default class Tabbar extends Component {
     actions.changeTab(tab);
   }
 
-  _renderContent(color: string, pageText: string, num?: number) {
+  _renderContent(pageText: string, num?: number) {
     return (
-      <View style={[styles.tabContent, {backgroundColor: color}]}>
+      <View style={[styles.tabContent]}>
         <Text style={styles.tabText}>{pageText}</Text>
         <Text style={styles.tabText}>{num} re-renders of the {pageText}</Text>
       </View>
@@ -53,7 +53,7 @@ export default class Tabbar extends Component {
               selectedTab: 'blueTab',
             });
           }}>
-          {this._renderContent('#414A8C', 'Blue Tab')}
+          {this._renderContent('Blue Tab')}
         </TabBarIOS.Item>
         <TabBarIOS.Item
           systemIcon="history"
@@ -65,7 +65,7 @@ export default class Tabbar extends Component {
               notifCount: this.state.notifCount + 1,
             });
           }}>
-          {this._renderContent('#783E33', 'Red Tab', this.state.notifCount)}
+          {this._renderContent('Red Tab', this.state.notifCount)}
         </TabBarIOS.Item>
         <TabBarIOS.Item
           icon={{uri: base64Icon, scale: 3}}
@@ -77,7 +77,7 @@ export default class Tabbar extends Component {
               presses: this.state.presses + 1
             });
           }}>
-          {this._renderContent('#21551C', 'Green Tab', this.state.presses)}
+          {this._renderContent('Green Tab', this.state.presses)}
         </TabBarIOS.Item>
       </TabBarIOS>
     )
@@ -90,7 +90,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   tabText: {
-    color: 'white',
     margin: 50,
   }
 })
