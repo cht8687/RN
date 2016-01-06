@@ -17,24 +17,17 @@ export default class App extends Component {
 
   constructor (props) {
     super(props);
-    this.state = {
-      tab: null
-    };
   }
 
-  componentWillReceiveProps (props) {
-    const { application } = props;
-    this.setState({
-      tab: application.tab
-    })
+  componentWillReceiveProps (nextProps) {
+    
   }
 
   render () {
-    const { tab } = this.state;
-    const { actions } = this.props;
+    const { tabName, actions } = this.props;
     return (
       <View style={styles.container}>
-        <Tabbar tab={'game'} actions={actions}/>
+        <Tabbar tab={tabName} actions={actions}/>
       </View>
     )
   }
@@ -47,13 +40,14 @@ const styles = StyleSheet.create({
 })
 
 App.propTypes = {
+  tabName: PropTypes.string,
   actions: PropTypes.object
 }
 
 
 function mapStateToProps(state) {
   return {
-    application: state.application
+    tabName: state.tab.tabName
   };
 }
 
@@ -62,7 +56,6 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(allActions, dispatch)
   };
 }
-
 
 export default connect(
   mapStateToProps,

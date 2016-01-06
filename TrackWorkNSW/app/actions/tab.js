@@ -1,6 +1,8 @@
 'use strict'
 
-import { APP } from '../constant/application';
+import { 
+  CHANGE_TAB 
+} from '../constant/ActionType';
 
 /**
  * Switch tab
@@ -8,7 +10,7 @@ import { APP } from '../constant/application';
 export function changeTab (tab) {
   return (dispatch) => {
     return Promise.resolve(dispatch({
-      type: APP.TAB,
+      type: CHANGE_TAB,
       data: tab
     }))
   }
