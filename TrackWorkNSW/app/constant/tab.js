@@ -1,3 +1,3 @@
 // TAB constant
-export const LIVE = "Live";
-export const COMMING = "Comming";
+export const LIVE = "LIVE";
+export const COMMING = "COMMING";

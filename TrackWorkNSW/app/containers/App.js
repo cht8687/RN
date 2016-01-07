@@ -9,8 +9,10 @@ import React, {
 } from 'react-native'
 import { connect } from 'react-redux/native'
 import { bindActionCreators } from 'redux';
-import allActions from '../actions';
+import * as allActions from '../actions';
 import Tabbar from '../components/Tabbar';
+
+console.log(allActions);
 
 
 export default class App extends Component {
@@ -27,7 +29,7 @@ export default class App extends Component {
     const { tabName, actions } = this.props;
     return (
       <View style={styles.container}>
-        <Tabbar tab={tabName} actions={actions}/>
+        <Tabbar tabName={tabName} actions={actions}/>
       </View>
     )
   }
