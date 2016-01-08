@@ -9,11 +9,8 @@ import React, {
 } from 'react-native'
 import { connect } from 'react-redux/native'
 import { bindActionCreators } from 'redux';
-import * as allActions from '../actions';
 import Tabbar from '../components/Tabbar';
-
-console.log(allActions);
-
+import * as tabActions from '../actions/tab';
 
 export default class App extends Component {
 
@@ -25,13 +22,15 @@ export default class App extends Component {
     
   }
 
-  render () {
+  render() {
     const { tabName, actions } = this.props;
+
     return (
-      <View style={styles.container}>
-        <Tabbar tabName={tabName} actions={actions}/>
-      </View>
-    )
+      <Tabbar
+        tabName={tabName}
+        actions={actions}
+      />
+    );
   }
 }
 
@@ -42,8 +41,7 @@ const styles = StyleSheet.create({
 })
 
 App.propTypes = {
-  tabName: PropTypes.string,
-  actions: PropTypes.object
+  tabName: PropTypes.string
 }
 
 
@@ -53,13 +51,22 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(allActions, dispatch)
-  };
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     actions: bindActionCreators(allActions, dispatch)
+//   };
+// }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App)
+// export default connect(
+//   mapStateToProps,
+// )(App)
+
+export default connect(state => {
+  return {
+    tabName: state.tab.tabName
+  }
+}, dispatch => {
+  return {
+    actions: bindActionCreators(tabActions, dispatch)
+  }
+})(App)

@@ -36,7 +36,7 @@ export default class Tabbar extends Component {
   }
 
   render () {
-    const { tabName } = this.props;
+    const { tabName, actions } = this.props;
 
     return (
       <TabBarIOS
@@ -45,17 +45,13 @@ export default class Tabbar extends Component {
         <TabBarIOS.Item
           systemIcon="featured"
           selected={tabName === LIVE}
-          onPress={() => {
-            
-          }}>
+          onPress={actions.changeTab(LIVE)}>
           {this._renderContent('')}
         </TabBarIOS.Item>
         <TabBarIOS.Item
           systemIcon="history"
           selected={tabName === COMMING}
-          onPress={() => {
-            
-          }}>
+          onPress={actions.changeTab(COMMING)}>
           {this._renderContent('Red Tab')}
         </TabBarIOS.Item>
       </TabBarIOS>
@@ -80,7 +76,7 @@ const styles = StyleSheet.create({
 })
 
 Tabbar.propTypes = {
-  actions: PropTypes.object,
-  tabName: PropTypes.string
+  tabName: PropTypes.string,
+  actions: PropTypes.object
 }
 
