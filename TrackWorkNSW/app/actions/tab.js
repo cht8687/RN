@@ -7,11 +7,9 @@ import {
 /**
  * Switch tab
  */
-export function changeTab (tab) {
-  return (dispatch) => {
-    return Promise.resolve(dispatch({
-      type: CHANGE_TAB,
-      data: tab
-    }))
+export function changeTab (data) {
+  return {
+    type: CHANGE_TAB,
+    data
   }
 }

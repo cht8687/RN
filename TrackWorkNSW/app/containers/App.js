@@ -10,7 +10,8 @@ import React, {
 import { connect } from 'react-redux/native'
 import { bindActionCreators } from 'redux';
 import Tabbar from '../components/Tabbar';
-import * as tabActions from '../actions/tab';
+import { changeTab } from '../actions/tab';
+console.log(changeTab);
 
 export default class App extends Component {
 
@@ -23,12 +24,12 @@ export default class App extends Component {
   }
 
   render() {
-    const { tabName, actions } = this.props;
+    const { tabName, changeTab } = this.props;
 
     return (
       <Tabbar
         tabName={tabName}
-        actions={actions}
+        changeTab={changeTab}
       />
     );
   }
@@ -41,7 +42,8 @@ const styles = StyleSheet.create({
 })
 
 App.propTypes = {
-  tabName: PropTypes.string
+  tabName: PropTypes.string,
+  changeTab: PropTypes.func
 }
 
 
@@ -51,22 +53,23 @@ function mapStateToProps(state) {
   };
 }
 
-// function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch) {
+  return {
+    changeTab: (tab) => dispatch(changeTab(tab))
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
+
+// export default connect(state => {
 //   return {
-//     actions: bindActionCreators(allActions, dispatch)
-//   };
-// }
-
-// export default connect(
-//   mapStateToProps,
-// )(App)
-
-export default connect(state => {
-  return {
-    tabName: state.tab.tabName
-  }
-}, dispatch => {
-  return {
-    actions: bindActionCreators(tabActions, dispatch)
-  }
-})(App)
+//     tabName: state.tab.tabName
+//   }
+// }, dispatch => {
+//   return {
+//     actions: dispatch(tabActions)
+//   }
+// })(App)

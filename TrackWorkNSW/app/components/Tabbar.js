@@ -22,9 +22,9 @@ export default class Tabbar extends Component {
     super(props);
   }
 
-  onPress (tab) {
-    const { actions } = this.props;
-    actions.changeTab(tab);
+  onBackPress () {
+    const { tabName, changeTab } = this.props;
+    changeTab(tabName);
   }
 
   _renderContent(pageText: string) {
@@ -36,22 +36,22 @@ export default class Tabbar extends Component {
   }
 
   render () {
-    const { tabName, actions } = this.props;
+    const { tabName, changeTab } = this.props;
 
     return (
-      <TabBarIOS
-        tintColor={styles.tabTint.color}
-        barTintColor={styles.barTint.color}>
+      <TabBarIOS>
         <TabBarIOS.Item
           systemIcon="featured"
           selected={tabName === LIVE}
-          onPress={actions.changeTab(LIVE)}>
+          onPress={this.onBackPress.bind(this)} 
+          >
           {this._renderContent('')}
         </TabBarIOS.Item>
         <TabBarIOS.Item
           systemIcon="history"
           selected={tabName === COMMING}
-          onPress={actions.changeTab(COMMING)}>
+          onPress={this.onBackPress.bind(this)} 
+          >
           {this._renderContent('Red Tab')}
         </TabBarIOS.Item>
       </TabBarIOS>
@@ -77,6 +77,6 @@ const styles = StyleSheet.create({
 
 Tabbar.propTypes = {
   tabName: PropTypes.string,
-  actions: PropTypes.object
+  changeTab: PropTypes.func
 }
 
