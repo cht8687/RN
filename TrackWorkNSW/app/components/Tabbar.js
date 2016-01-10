@@ -23,8 +23,8 @@ export default class Tabbar extends Component {
   }
 
   onBackPress (tab) {
-    const { changeTab } = this.props;
-    changeTab(tab);
+    const { actions } = this.props;
+    actions.changeTab(tab);
   }
 
   _renderContent(pageText: string) {
@@ -36,7 +36,7 @@ export default class Tabbar extends Component {
   }
 
   render () {
-    const { tabName, changeTab } = this.props;
+    const { tabName } = this.props;
 
     return (
       <TabBarIOS>
@@ -77,6 +77,6 @@ const styles = StyleSheet.create({
 
 Tabbar.propTypes = {
   tabName: PropTypes.string,
-  changeTab: PropTypes.func
+  actions: PropTypes.object
 }
 
