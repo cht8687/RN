@@ -22,9 +22,9 @@ export default class Tabbar extends Component {
     super(props);
   }
 
-  onBackPress () {
-    const { tabName, changeTab } = this.props;
-    changeTab(tabName);
+  onBackPress (tab) {
+    const { changeTab } = this.props;
+    changeTab(tab);
   }
 
   _renderContent(pageText: string) {
@@ -43,14 +43,14 @@ export default class Tabbar extends Component {
         <TabBarIOS.Item
           systemIcon="featured"
           selected={tabName === LIVE}
-          onPress={this.onBackPress.bind(this)} 
+          onPress={this.onBackPress.bind(this, LIVE)} 
           >
           {this._renderContent('')}
         </TabBarIOS.Item>
         <TabBarIOS.Item
           systemIcon="history"
           selected={tabName === COMMING}
-          onPress={this.onBackPress.bind(this)} 
+          onPress={this.onBackPress.bind(this, COMMING)} 
           >
           {this._renderContent('Red Tab')}
         </TabBarIOS.Item>

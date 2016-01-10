@@ -4,17 +4,21 @@ import createReducer from '../utils/createReducer';
 import {
 	CHANGE_TAB
 } from '../constant/ActionType';
+import {
+	LIVE,
+	COMMING
+} from '../constant/tab';
 import { Record } from 'immutable';
 
 class State extends Record({
-	tabName: 'COMMING'
+	tabName: 'LIVE'
 
 }){
 
 }
 
 const actionHandler = {
-  [CHANGE_TAB]:(state, action) => {
+  [CHANGE_TAB](state, action) {
     const { data } = action;
     return state.set('tabName', data);
   }

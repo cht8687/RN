@@ -11,7 +11,6 @@ import { connect } from 'react-redux/native'
 import { bindActionCreators } from 'redux';
 import Tabbar from '../components/Tabbar';
 import { changeTab } from '../actions/tab';
-console.log(changeTab);
 
 export default class App extends Component {
 
