@@ -25,6 +25,8 @@ export default class Tabbar extends Component {
   onTapTab (tab) {
     const { actions } = this.props;
     actions.changeTab(tab);
+    const news = actions.fetchNews();
+    
   }
 
   _renderContent(pageText: string) {

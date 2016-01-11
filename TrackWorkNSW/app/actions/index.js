@@ -1,9 +1,11 @@
 'use strict'
 
 import { changeTab } from './tab';
+import { fetchNews } from './news';
 
 const actions = {
-  changeTab
+  changeTab,
+  fetchNews
 }
 
 export default actions;
