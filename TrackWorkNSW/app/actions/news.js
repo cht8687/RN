@@ -11,15 +11,15 @@ import Api from '../api/api';
  */
 export function fetchNews () {
 
-	return (dispatch, getStore) => {
+  return (dispatch, getStore) => {
 
-		const api = new Api();
- 		return api.getNews()
- 		 .then(data => {
- 		 		return dispatch({
- 		 			type: FETCH_NEWS,
- 		 			data
- 		 		})
- 		 })
-	}
+    const api = new Api();
+    return api.getNews()
+     .then(data => {
+        return dispatch({
+          type: FETCH_NEWS,
+          data
+        })
+     })
+  }
 }

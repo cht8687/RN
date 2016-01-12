@@ -1,7 +1,2 @@
-const url = {
-  news:() => {
-    return "http://www.sydneytrains.info/"
-  }
-}
 
-export default url;
+export const news = "http://www.sydneytrains.info/";
