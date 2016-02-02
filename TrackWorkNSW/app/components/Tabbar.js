@@ -13,6 +13,8 @@ import {
   LIVE,
   COMMING
 } from '../constant/tab';
+import Live from './Live';
+import Incomming from './Incomming';
 
 export default class Tabbar extends Component {
 
@@ -23,15 +25,23 @@ export default class Tabbar extends Component {
   onTapTab (tab) {
     const { actions } = this.props;
     actions.changeTab(tab);
-    const news = actions.fetchNews();
-    
   }
 
-  _renderContent(pageText: string) {
+  _renderLiveTrackWork() {
+    const { actions } = this.props;
     return (
-      <View style={[styles.tabContent]}>
-        <Text style={styles.tabText}>{pageText}</Text>
-      </View>
+      <Live
+        actions={actions}
+      />
+    );
+  }
+
+  _renderCommingTrackWork() {
+    const { actions } = this.props;
+    return (
+      <Incomming
+        actions={actions}
+      />
     );
   }
 
@@ -45,14 +55,14 @@ export default class Tabbar extends Component {
           selected={tabName === LIVE}
           onPress={this.onTapTab.bind(this, LIVE)} 
           >
-          {this._renderContent('Live TrackWork')}
+          {this._renderLiveTrackWork()}
         </TabBarIOS.Item>
         <TabBarIOS.Item
           systemIcon="history"
           selected={tabName === COMMING}
           onPress={this.onTapTab.bind(this, COMMING)} 
           >
-          {this._renderContent('Comming Trackwork')}
+          {this._renderCommingTrackWork()}
         </TabBarIOS.Item>
       </TabBarIOS>
     )
