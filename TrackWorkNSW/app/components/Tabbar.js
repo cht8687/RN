@@ -79,4 +79,3 @@ Tabbar.propTypes = {
   tabName: PropTypes.string,
   actions: PropTypes.object
 }
-

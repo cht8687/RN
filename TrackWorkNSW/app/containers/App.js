@@ -53,7 +53,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    // changeTab: (tab) => dispatch(changeTab(tab))
     actions: bindActionCreators(allActions, dispatch)
   };
 }
