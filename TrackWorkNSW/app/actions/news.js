@@ -14,8 +14,11 @@ export function fetchNews () {
   return (dispatch, getStore) => {
     const api = new Api();
       return api.getNews()
-        .then(res => {
-          window.console.log(res);
+        .then(data => {
+          dispatch({
+            type: FETCH_NEWS,
+            data
+          })
         })
   }
 }

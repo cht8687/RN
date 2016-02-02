@@ -5,7 +5,8 @@ import { default as tab } from './tab';
 import { default as news } from './news';
 
 const reducers = combineReducers({
-  tab
+  tab,
+  news
 });
 
 export default reducers;
