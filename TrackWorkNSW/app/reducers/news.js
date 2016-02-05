@@ -6,9 +6,10 @@ import {
 } from '../constant/ActionType';
 
 import { Record } from 'immutable';
+import { newsParser } from '../utils/newsParser';
 
 class State extends Record({
-	newsData: null
+	newsData: []
 
 }){
 
@@ -17,7 +18,10 @@ class State extends Record({
 const actionHandler = {
   [FETCH_NEWS](state, action) {
     const { data } = action;
-    return state.set('newsData', data);
+
+    let result = newsParser(data);
+
+    return state.set('newsData', result);
   }
 }
 

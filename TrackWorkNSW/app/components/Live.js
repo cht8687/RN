@@ -16,16 +16,25 @@ export default class Live extends Component {
     super(props);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const { actions } = this.props;
     actions.fetchNews();
   }
 
   render() {
-
+    const { newsData } = this.props;
     return (
       <View style={[styles.tabContent]}>
         <Text style={styles.tabText}>Live news</Text>
+        {
+          newsData.map((e, index) => (
+       
+            <Text key={index}>
+              {e.lineName}
+            </Text>
+      
+          ))
+        }
       </View>
     )
   }
@@ -48,5 +57,6 @@ const styles = StyleSheet.create({
 })
 
 Live.propTypes = {
-  actions: PropTypes.object
+  actions: PropTypes.object,
+  newsData: PropTypes.array
 }

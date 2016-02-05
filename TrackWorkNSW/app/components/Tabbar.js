@@ -28,10 +28,11 @@ export default class Tabbar extends Component {
   }
 
   _renderLiveTrackWork() {
-    const { actions } = this.props;
+    const { actions, newsData } = this.props;
     return (
       <Live
         actions={actions}
+        newsData={newsData}
       />
     );
   }
@@ -87,5 +88,6 @@ const styles = StyleSheet.create({
 
 Tabbar.propTypes = {
   tabName: PropTypes.string,
-  actions: PropTypes.object
+  actions: PropTypes.object,
+  newsData: PropTypes.array
 }

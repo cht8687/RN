@@ -23,12 +23,13 @@ export default class App extends Component {
   }
 
   render() {
-    const { tabName, actions } = this.props;
+    const { tabName, actions, newsData } = this.props;
 
     return (
       <Tabbar
         tabName={tabName}
         actions={actions}
+        newsData={newsData}
       />
     );
   }
@@ -42,12 +43,14 @@ const styles = StyleSheet.create({
 
 App.propTypes = {
   tabName: PropTypes.string,
-  actions: PropTypes.object
+  actions: PropTypes.object,
+  newsData: PropTypes.array
 }
 
 function mapStateToProps(state) {
   return {
-    tabName: state.tab.tabName
+    tabName: state.tab.tabName,
+    newsData: state.news.newsData
   };
 }
 
