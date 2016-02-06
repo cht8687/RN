@@ -33,6 +33,7 @@ export default class Tabbar extends Component {
       <Live
         actions={actions}
         newsData={newsData}
+        style={styles.tabContent}
       />
     );
   }
@@ -42,6 +43,7 @@ export default class Tabbar extends Component {
     return (
       <Incomming
         actions={actions}
+        style={styles.tabContent}
       />
     );
   }
@@ -73,10 +75,10 @@ export default class Tabbar extends Component {
 const styles = StyleSheet.create({
   tabContent: {
     flex: 1,
-    alignItems: 'center',
+    flexDirection: 'column'
   },
   tabText: {
-    margin: 50,
+    margin: 50
   },
   tabTint: {
     color: '#1B82C5'

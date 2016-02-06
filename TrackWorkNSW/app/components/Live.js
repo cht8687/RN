@@ -39,7 +39,7 @@ export default class Live extends Component {
   renderRow(rowData){
 
     return (
-      <View>
+      <View style={styles.listViewContainer}>
         <Text style={styles.lineName}> {rowData.lineName} </Text>
         <Text style={styles.serviceStatus}> {rowData.ServiceStatus} </Text>
       </View>
@@ -50,12 +50,15 @@ export default class Live extends Component {
 
     return (
       <View style={[styles.tabContent]}>
-        <Text style={styles.tabText}>Live news</Text>
-          <ListView
-            dataSource={this.state.dataSource} 
-            renderRow={this.renderRow.bind(this)}
-            style={styles.listView}
-          />
+        <View style={styles.tabHeader}>
+          <Text style={styles.tabText}> Live Track News </Text>
+        </View>
+        
+        <ListView
+          dataSource={this.state.dataSource} 
+          renderRow={this.renderRow.bind(this)}
+          style={styles.listView}
+        />
       </View>
     )
   }
@@ -63,11 +66,14 @@ export default class Live extends Component {
 
 const styles = StyleSheet.create({
   tabContent: {
-    flex: 1,
+
+  },
+  tabHeader: {
     alignItems: 'center',
+    marginTop: 15
   },
   tabText: {
-    margin: 50,
+
   },
   tabTint: {
     color: '#1B82C5'
@@ -76,18 +82,23 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   listView: {
-    backgroundColor: 'blue',
-    flex: 6,
-    flexDirection: 'column',
-    paddingTop: 12
+    flex: 1,
+    marginTop: 20
+  },
+  listViewContainer: {
+    flex: 1,
+    backgroundColor: '#F5FCFF',
+    borderColor: '#0099AA',
+    borderWidth: 2,
+    marginTop: 3
   },
   lineName: {
-    color: '#fff',
+    color: '#000',
     fontSize: 11,
     marginTop: 2
   },
   serviceStatus: {
-    color: '#fff',
+    color: '#000',
     fontWeight: 'bold',
     fontSize: 13,
     position: 'relative',
