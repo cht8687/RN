@@ -8,8 +8,10 @@ import React, {
   TabBarIOS,
   TouchableHighlight,
   PropTypes,
-  ListView
+  ListView,
+  Image
 } from 'react-native';
+import colorLookupTable from '../utils/colorLookUp';
 
 export default class Live extends Component {
 
@@ -36,14 +38,28 @@ export default class Live extends Component {
     })
   }
 
-  renderRow(rowData){
+  renderRow(rowData) {
 
     return (
       <View style={styles.listViewContainer}>
-        <Text style={styles.lineName}> {rowData.lineName} </Text>
-        <Text style={styles.serviceStatus}> {rowData.ServiceStatus} </Text>
+        <View style={[styles.listViewLeftBanner, this.bgcolor(rowData.lineName)]}>
+          <Text></Text>
+        </View>
+        <View style={styles.listViewContent}>
+          <Text style={styles.lineName}> {rowData.lineName} </Text>
+          <Text style={styles.serviceStatus}> {rowData.ServiceStatus} </Text>
+        </View>
       </View>
     )
+  }
+
+  bgcolor(lineName) {
+
+    const cor = colorLookupTable[lineName];
+
+    return {
+      backgroundColor: cor
+    }
   }
 
   render() {
@@ -53,7 +69,7 @@ export default class Live extends Component {
         <View style={styles.tabHeader}>
           <Text style={styles.tabText}> Live Track News </Text>
         </View>
-        
+
         <ListView
           dataSource={this.state.dataSource} 
           renderRow={this.renderRow.bind(this)}
@@ -87,19 +103,27 @@ const styles = StyleSheet.create({
   },
   listViewContainer: {
     flex: 1,
+    flexDirection: 'row',
     backgroundColor: '#F5FCFF',
-    borderColor: '#0099AA',
+    borderColor: 'grey',
     borderWidth: 2,
     marginTop: 3
   },
+  listViewLeftBanner: {
+    flex: 1
+  },
+  listViewContent: {
+    flex: 10,
+    flexDirection: 'column'
+  },
   lineName: {
     color: '#000',
-    fontSize: 11,
+    fontSize: 16,
+    fontWeight: 'bold',
     marginTop: 2
   },
   serviceStatus: {
     color: '#000',
-    fontWeight: 'bold',
     fontSize: 13,
     position: 'relative',
     top: 0
