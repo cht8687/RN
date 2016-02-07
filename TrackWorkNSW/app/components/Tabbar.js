@@ -39,10 +39,11 @@ export default class Tabbar extends Component {
   }
 
   _renderCommingTrackWork() {
-    const { actions } = this.props;
+    const { actions, inCommingNewsData } = this.props;
     return (
       <Incomming
         actions={actions}
+        inCommingNewsData={inCommingNewsData}
         style={styles.tabContent}
       />
     );
@@ -91,5 +92,6 @@ const styles = StyleSheet.create({
 Tabbar.propTypes = {
   tabName: PropTypes.string,
   actions: PropTypes.object,
-  newsData: PropTypes.array
+  newsData: PropTypes.array,
+  inCommingNewsData: PropTypes.array
 }

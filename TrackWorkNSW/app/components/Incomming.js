@@ -7,25 +7,72 @@ import React, {
   Text,
   TabBarIOS,
   TouchableHighlight,
-  PropTypes
+  PropTypes,
+  ListView
 } from 'react-native';
+import colorLookupTable from '../utils/colorLookUp';
 
 export default class Incomming extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      dataSource: new ListView.DataSource({
+        rowHasChanged: (r1, r2) => r1 !== r2
+      })
+    };
   }
 
   componentDidMount() {
     const { actions } = this.props;
-    actions.fetchNews();
+    actions.fetchIncommingNews();
+  }
+
+  bgcolor(lineName) {
+
+    const cor = colorLookupTable[lineName];
+
+    return {
+      backgroundColor: cor
+    }
+  }
+
+  componentWillReceiveProps(props) {
+    const { dataSource } = this.state;
+    const { inCommingNewsData } = this.props;
+    this.setState({
+      dataSource: dataSource.cloneWithRows(inCommingNewsData)
+    })
+  }
+
+  renderRow(rowData) {
+
+    return (
+      <View style={styles.listViewContainer}>
+        <View style={[styles.listViewLeftBanner, this.bgcolor(rowData.lineName)]}>
+          <Text style={styles.lineName}> {rowData.lineName} </Text>
+        </View>
+        <View style={styles.listHeader}>
+        </View>
+        <View style={styles.listViewContent}>
+        </View>
+      </View>
+    )
   }
 
   render() {
 
     return (
       <View style={[styles.tabContent]}>
-        <Text style={styles.tabText}>Incomming news</Text>
+        <View style={styles.tabHeader}>
+          <Text style={styles.tabText}> Comming (next 2 weeks) </Text>
+        </View>
+        <ListView
+          dataSource={this.state.dataSource} 
+          renderRow={this.renderRow.bind(this)}
+          style={styles.listView}
+        />
       </View>
     )
   }
@@ -33,20 +80,55 @@ export default class Incomming extends Component {
 
 const styles = StyleSheet.create({
   tabContent: {
-    flex: 1,
+    flex: 1
+  },
+  tabHeader: {
     alignItems: 'center',
+    marginTop: 15
   },
   tabText: {
-    margin: 50,
+
   },
   tabTint: {
     color: '#1B82C5'
   },
   barTint: {
     color: 'white'
+  },
+  listView: {
+    flex: 1,
+    marginTop: 20
+  },
+  listHeader: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#F5FCFF',
+    borderColor: 'grey',
+    borderWidth: 2,
+    marginTop: 3
+  },
+  listViewLeftBanner: {
+    flex: 1
+  },
+  listViewContent: {
+    flex: 10,
+    flexDirection: 'column'
+  },
+  lineName: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: 2
+  },
+  serviceStatus: {
+    color: '#000',
+    fontSize: 13,
+    position: 'relative',
+    top: 0
   }
 })
 
 Incomming.propTypes = {
-  actions: PropTypes.object
+  actions: PropTypes.object,
+  inCommingNewsData: PropTypes.array
 }
