@@ -82,7 +82,7 @@ export default class Live extends Component {
 
 const styles = StyleSheet.create({
   tabContent: {
-
+    flex: 1
   },
   tabHeader: {
     alignItems: 'center',
