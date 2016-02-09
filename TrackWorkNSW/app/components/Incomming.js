@@ -11,20 +11,16 @@ import React, {
   ListView
 } from 'react-native';
 import colorLookupTable from '../utils/colorLookUp';
+import { buildLiveDataList } from '../utils/dataSourceFactory';
 
 export default class Incomming extends Component {
 
   constructor(props) {
     super(props);
 
-    this.state = {
-      dataSource: new ListView.DataSource({
-        rowHasChanged: (r1, r2) => r1 !== r2
-      })
-    };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const { actions } = this.props;
     actions.fetchIncommingNews();
   }
@@ -38,14 +34,6 @@ export default class Incomming extends Component {
     }
   }
 
-  componentWillReceiveProps(props) {
-    const { dataSource } = this.state;
-    const { inCommingNewsData } = this.props;
-    this.setState({
-      dataSource: dataSource.cloneWithRows(inCommingNewsData)
-    })
-  }
-
   renderRow(rowData) {
 
     return (
@@ -56,6 +44,7 @@ export default class Incomming extends Component {
         <View style={styles.listHeader}>
         </View>
         <View style={styles.listViewContent}>
+          
         </View>
       </View>
     )
@@ -63,13 +52,16 @@ export default class Incomming extends Component {
 
   render() {
 
+    const data = this.props.inCommingNewsData;
+    let dataSource = buildLiveDataList(data);
+
     return (
       <View style={[styles.tabContent]}>
         <View style={styles.tabHeader}>
           <Text style={styles.tabText}> Comming (next 2 weeks) </Text>
         </View>
         <ListView
-          dataSource={this.state.dataSource} 
+          dataSource={dataSource} 
           renderRow={this.renderRow.bind(this)}
           style={styles.listView}
         />
