@@ -17,12 +17,6 @@ export default class Live extends Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      dataSource: new ListView.DataSource({
-        rowHasChanged: (r1, r2) => r1 !== r2
-      })
-    };
   }
 
   componentDidMount() {
@@ -30,12 +24,13 @@ export default class Live extends Component {
     actions.fetchNews();
   }
 
-  componentWillReceiveProps(props) {
-    const { dataSource } = this.state;
+  buildLiveTrackNewsList() {
     const { newsData } = this.props;
-    this.setState({
-      dataSource: dataSource.cloneWithRows(newsData)
-    })
+    let dataSource = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2
+    });
+    dataSource = dataSource.cloneWithRows(newsData);
+    return dataSource;
   }
 
   renderRow(rowData) {
@@ -64,6 +59,8 @@ export default class Live extends Component {
 
   render() {
 
+    let dataSource = this.buildLiveTrackNewsList();
+
     return (
       <View style={[styles.tabContent]}>
         <View style={styles.tabHeader}>
@@ -71,7 +68,7 @@ export default class Live extends Component {
         </View>
 
         <ListView
-          dataSource={this.state.dataSource} 
+          dataSource={dataSource} 
           renderRow={this.renderRow.bind(this)}
           style={styles.listView}
         />
