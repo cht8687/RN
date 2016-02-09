@@ -12,6 +12,7 @@ import React, {
   Image
 } from 'react-native';
 import colorLookupTable from '../utils/colorLookUp';
+import { buildLiveDataList } from '../utils/dataSourceFactory';
 
 export default class Live extends Component {
 
@@ -22,15 +23,6 @@ export default class Live extends Component {
   componentDidMount() {
     const { actions } = this.props;
     actions.fetchNews();
-  }
-
-  buildLiveTrackNewsList() {
-    const { newsData } = this.props;
-    let dataSource = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2
-    });
-    dataSource = dataSource.cloneWithRows(newsData);
-    return dataSource;
   }
 
   renderRow(rowData) {
@@ -59,7 +51,8 @@ export default class Live extends Component {
 
   render() {
 
-    let dataSource = this.buildLiveTrackNewsList();
+    const data = this.props.newsData;
+    let dataSource = buildLiveDataList(data);
 
     return (
       <View style={[styles.tabContent]}>
