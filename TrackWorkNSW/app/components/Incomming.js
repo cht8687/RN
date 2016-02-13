@@ -39,7 +39,7 @@ export default class Incomming extends Component {
     return (
       <View style={styles.listViewContainer}>
         <Text style={styles.timeInfo}>{rowData.time}</Text>
-        <Text>{rowData.content}</Text>
+        <Text style={styles.incomingContent}>{rowData.content}</Text>
       </View>
     )
   }
@@ -132,7 +132,13 @@ const styles = StyleSheet.create({
     top: 0
   },
   timeInfo: {
-    backgroundColor: '#ccc'
+    fontWeight: 'bold',
+    backgroundColor: '#ccc',
+    padding: 5
+  },
+  incomingContent: {
+    padding: 15,
+    paddingRight: 20
   }
 })
 
