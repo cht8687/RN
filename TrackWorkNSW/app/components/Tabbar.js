@@ -15,6 +15,7 @@ import {
 } from '../constant/tab';
 import Live from './Live';
 import Incomming from './Incomming';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export default class Tabbar extends Component {
 
@@ -54,20 +55,24 @@ export default class Tabbar extends Component {
 
     return (
       <TabBarIOS>
-        <TabBarIOS.Item
-          systemIcon="featured"
+        <Icon.TabBarItem
+          title="Live"
+          iconName="wrench"
+          selectedIconName="wrench"
           selected={tabName === LIVE}
           onPress={this.onTapTab.bind(this, LIVE)} 
           >
           {this._renderLiveTrackWork()}
-        </TabBarIOS.Item>
-        <TabBarIOS.Item
-          systemIcon="history"
+        </Icon.TabBarItem>
+        <Icon.TabBarItem
+          title="Comming"
+          iconName="calendar"
+          selectedIconName="calendar"
           selected={tabName === COMMING}
           onPress={this.onTapTab.bind(this, COMMING)} 
           >
           {this._renderCommingTrackWork()}
-        </TabBarIOS.Item>
+        </Icon.TabBarItem>
       </TabBarIOS>
     )
   }
