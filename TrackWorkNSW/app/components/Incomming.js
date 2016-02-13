@@ -34,7 +34,19 @@ export default class Incomming extends Component {
     }
   }
 
+  renderIncommingRow(rowData) {
+
+    return (
+      <View style={styles.listViewContainer}>
+        <Text style={styles.timeInfo}>{rowData.time}</Text>
+        <Text>{rowData.content}</Text>
+      </View>
+    )
+  }
+
   renderRow(rowData) {
+
+    let dataSource = buildLiveDataList(rowData.Content);
 
     return (
       <View style={styles.listViewContainer}>
@@ -44,7 +56,10 @@ export default class Incomming extends Component {
         <View style={styles.listHeader}>
         </View>
         <View style={styles.listViewContent}>
-          
+          <ListView
+            dataSource={dataSource}
+            renderRow={this.renderIncommingRow.bind(this)}
+          />
         </View>
       </View>
     )
@@ -95,9 +110,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     backgroundColor: '#F5FCFF',
-    borderColor: 'grey',
-    borderWidth: 2,
-    marginTop: 3
+    borderColor: 'grey'
   },
   listViewLeftBanner: {
     flex: 1
@@ -117,6 +130,9 @@ const styles = StyleSheet.create({
     fontSize: 13,
     position: 'relative',
     top: 0
+  },
+  timeInfo: {
+    backgroundColor: '#ccc'
   }
 })
 
