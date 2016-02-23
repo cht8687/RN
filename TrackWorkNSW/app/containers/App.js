@@ -6,11 +6,13 @@ import React, {
   StyleSheet,
   PropTypes,
   Text
-} from 'react-native'
-import { connect } from 'react-redux/native'
-import { bindActionCreators } from 'redux';
+} from 'react-native';
+import {
+  Router,
+  Route,
+  Schema
+} from 'react-native-router-flux';
 import Tabbar from '../components/Tabbar';
-import allActions from '../actions';
 
 export default class App extends Component {
 
@@ -18,20 +20,14 @@ export default class App extends Component {
     super(props);
   }
 
-  componentWillReceiveProps (nextProps) {
-    
-  }
-
   render() {
-    const { tabName, actions, newsData, inCommingNewsData } = this.props;
 
     return (
-      <Tabbar
-        tabName={tabName}
-        actions={actions}
-        newsData={newsData}
-        inCommingNewsData={inCommingNewsData}
-      />
+
+      // Now has router
+      <Router hideNavBar={false}>
+        <Route name="Tabbar" schema="default" component={Tabbar} title="Live Info" initial />
+      </Router>
     );
   }
 }
@@ -41,29 +37,3 @@ const styles = StyleSheet.create({
     flex: 1
   }
 })
-
-App.propTypes = {
-  tabName: PropTypes.string,
-  actions: PropTypes.object,
-  newsData: PropTypes.array,
-  inCommingNewsData: PropTypes.array
-}
-
-function mapStateToProps(state) {
-  return {
-    tabName: state.tab.tabName,
-    newsData: state.news.newsData,
-    inCommingNewsData: state.news.inCommingNewsData
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(allActions, dispatch)
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App)

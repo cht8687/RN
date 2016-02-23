@@ -16,6 +16,9 @@ import {
 import Live from './Live';
 import Incomming from './Incomming';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { bindActionCreators } from 'redux';
+import allActions from '../actions';
+import { connect } from 'react-redux/native'
 
 export default class Tabbar extends Component {
 
@@ -100,3 +103,23 @@ Tabbar.propTypes = {
   newsData: PropTypes.array,
   inCommingNewsData: PropTypes.array
 }
+
+
+function mapStateToProps(state) {
+  return {
+    tabName: state.tab.tabName,
+    newsData: state.news.newsData,
+    inCommingNewsData: state.news.inCommingNewsData
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(allActions, dispatch)
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Tabbar)
