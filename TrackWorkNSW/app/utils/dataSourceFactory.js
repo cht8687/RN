@@ -13,6 +13,9 @@ export function buildLiveDataList(data) {
 
 export function buildLiveDataListWithSectionID(data, sectionIds) {
  let dataSource = new ListView.DataSource({
+    getSectionHeaderData: (dataBlob, sectionID) => {
+      return dataBlob[sectionID];
+    },
     rowHasChanged: (r1, r2) => r1 !== r2,
     sectionHeaderHasChanged: (s1, s2) => s1 !== s2
   });

@@ -12,7 +12,6 @@ import React, {
 } from 'react-native';
 import colorLookupTable from '../utils/colorLookUp';
 import { buildLiveDataList, buildLiveDataListWithSectionID } from '../utils/dataSourceFactory';
-import { SECTIONIDS } from '../utils/inCommingNewsParser';
 
 export default class Incomming extends Component {
 
@@ -53,9 +52,9 @@ export default class Incomming extends Component {
       )
   }
 
-  renderRow(rowDatsa) {
+  renderRow(rowData) {
 
-    let dataSource = buildLiveDataListWithSectionID(rowData.Content, SECTIONIDS);
+    let dataSource = buildLiveDataList(rowData);
 
     return (
       <View style={styles.listViewContainer}>
@@ -77,7 +76,8 @@ export default class Incomming extends Component {
   render() {
 
     const data = this.props.inCommingNewsData;
-    let dataSource = buildLiveDataList(data);
+    const sectionIds = Object.keys(data);
+    let dataSource = buildLiveDataListWithSectionID(data,sectionIds);
 
     return (
       <View style={[styles.tabContent]}>
