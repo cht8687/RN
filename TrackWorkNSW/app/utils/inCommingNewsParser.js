@@ -26,6 +26,8 @@ const INFO = [
   ]}
 ];
 
+export const SECTIONIDS = [ 0, 1, 2, 3, 4];
+
 export function inCommingNewsParser(data) {
   return INFO;
 }
