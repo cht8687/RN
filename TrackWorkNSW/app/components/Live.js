@@ -40,6 +40,14 @@ export default class Live extends Component {
     )
   }
 
+  renderSectionHeader(sectionData, sectionID) {
+    return (
+      <View style={styles.section}>
+        <Text style={styles.sectionText}>{sectionID}</Text>
+      </View>
+      )
+  }
+
   bgcolor(lineName) {
 
     const cor = colorLookupTable[lineName];
