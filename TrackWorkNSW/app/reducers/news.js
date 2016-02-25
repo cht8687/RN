@@ -12,7 +12,7 @@ import { inCommingNewsParser } from '../utils/inCommingNewsParser';
 
 class State extends Record({
   newsData: [],
-  inCommingNewsData: []
+  inCommingNewsData: {}
 
 }){
 

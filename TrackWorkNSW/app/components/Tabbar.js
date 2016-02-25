@@ -101,7 +101,7 @@ Tabbar.propTypes = {
   tabName: PropTypes.string,
   actions: PropTypes.object,
   newsData: PropTypes.array,
-  inCommingNewsData: PropTypes.array
+  inCommingNewsData: PropTypes.object
 }
 
 

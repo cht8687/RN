@@ -46,8 +46,8 @@ export default class Incomming extends Component {
 
   renderSectionHeader(sectionData, sectionID) {
     return (
-      <View style={styles.section}>
-        <Text style={styles.sectionText}>{sectionID}</Text>
+      <View style={[styles.listHeader]}>
+        <Text style={styles.listText}>{sectionID}</Text>
       </View>
       )
   }
@@ -58,9 +58,6 @@ export default class Incomming extends Component {
 
     return (
       <View style={styles.listViewContainer}>
-        <View style={[styles.listViewLeftBanner, this.bgcolor(rowData.lineName)]}>
-          <Text style={styles.lineName}> {rowData.lineName} </Text>
-        </View>
         <View style={styles.listHeader}>
         </View>
         <View style={styles.listViewContent}>
@@ -77,7 +74,15 @@ export default class Incomming extends Component {
 
     const data = this.props.inCommingNewsData;
     const sectionIds = Object.keys(data);
-    let dataSource = buildLiveDataListWithSectionID(data,sectionIds);
+    if (sectionIds.length <= 0) {
+      return ( 
+        <View style={styles.loadingData}>
+          <Text style={styles.loadingText}> LOADING ... </Text>
+        </View>
+      )
+    }
+    // const sectionIds = ['olympicPark', 'hunter', 'southCoast', 'newcastle', 'blueMountains'];
+    let dataSource = buildLiveDataListWithSectionID(data, sectionIds);
 
     return (
       <View style={[styles.tabContent]}>
@@ -149,10 +154,27 @@ const styles = StyleSheet.create({
   incomingContent: {
     padding: 15,
     paddingRight: 20
+  },
+  loadingData: {
+    marginTop: 20
+  },
+  loadingText: {
+    color: '#000'
+  },
+  listHeader: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#F5FCFF'
+  },
+  listText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: 15,
+    marginBottom: 5
   }
 })
 
 Incomming.propTypes = {
   actions: PropTypes.object,
-  inCommingNewsData: PropTypes.array
+  inCommingNewsData: PropTypes.object
 }
