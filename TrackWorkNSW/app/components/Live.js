@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
     borderColor: 'grey',
     borderWidth: 2,
-    marginTop: 3
+    marginTop: 15
   },
   listViewLeftBanner: {
     flex: 1

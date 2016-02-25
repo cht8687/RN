@@ -3,7 +3,7 @@ import React, {
   ListView
 } from 'react-native';
 
-export function buildLiveDataList(data) {
+export function buildLiveDataList(data, rowIds) {
   let dataSource = new ListView.DataSource({
     rowHasChanged: (r1, r2) => r1 !== r2
   });

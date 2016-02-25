@@ -38,8 +38,7 @@ export default class Incomming extends Component {
 
     return (
       <View style={styles.listViewContainer}>
-        <Text style={styles.timeInfo}>{rowData.time}</Text>
-        <Text style={styles.incomingContent}>{rowData.content}</Text>
+        <Text style={styles.timeInfo}>{rowData}</Text>
       </View>
     )
   }
@@ -81,7 +80,6 @@ export default class Incomming extends Component {
         </View>
       )
     }
-    // const sectionIds = ['olympicPark', 'hunter', 'southCoast', 'newcastle', 'blueMountains'];
     let dataSource = buildLiveDataListWithSectionID(data, sectionIds);
 
     return (
