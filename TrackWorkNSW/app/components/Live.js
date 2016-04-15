@@ -50,10 +50,10 @@ export default class Live extends Component {
 
   bgcolor(lineName) {
 
-    const cor = colorLookupTable[lineName];
+    const color = colorLookupTable[lineName];
 
     return {
-      backgroundColor: cor
+      backgroundColor: color
     }
   }
 
