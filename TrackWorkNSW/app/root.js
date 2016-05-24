@@ -18,7 +18,9 @@ const store = createStoreWithMW(reducers);
 export default class Root extends Component {
 
   componentDidMount () {
-    StatusBarIOS.setHidden(true)
+    if (Platform.OS === 'ios') {
+      StatusBarIOS.setHidden(true)
+    }
   }
 
   render () {

@@ -119,12 +119,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 20
   },
-  listHeader: {
-    flex: 1,
-    flexDirection: 'row',
-    backgroundColor: '#F5FCFF',
-    borderColor: 'grey'
-  },
   listViewLeftBanner: {
     flex: 1
   },
