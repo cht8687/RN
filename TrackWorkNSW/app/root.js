@@ -1,12 +1,11 @@
 'use strict'
 
 import React, {
-  Component,
   StatusBarIOS
 } from 'react-native';
-
+import { Component } from 'react';
 import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux/native';
+import { Provider } from 'react-redux';
 import reducers from './reducers/index';
 import logger from './middleware/logger';
 import thunk from 'redux-thunk';

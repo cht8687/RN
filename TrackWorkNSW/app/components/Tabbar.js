@@ -1,24 +1,23 @@
 'use strict'
 
 import React, {
-  Component,
   StyleSheet,
   View,
   Text,
   TabBarIOS,
   TouchableHighlight,
-  PropTypes
 } from 'react-native';
 import {
   LIVE,
   COMMING
 } from '../constant/tab';
+import { Component, PropTypes } from 'react';
 import Live from './Live';
 import Incomming from './Incomming';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { bindActionCreators } from 'redux';
 import allActions from '../actions';
-import { connect } from 'react-redux/native'
+import { connect } from 'react-redux'
 
 export default class Tabbar extends Component {
 

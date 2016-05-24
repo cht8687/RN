@@ -1,12 +1,11 @@
 'use strict'
 
 import React, {
-  Component,
   View,
   StyleSheet,
-  PropTypes,
   Text
 } from 'react-native';
+import { Component, PropTypes } from 'react';
 import {
   Router,
   Route,

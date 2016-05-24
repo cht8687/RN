@@ -1,16 +1,15 @@
 'use strict'
 
 import React, {
-  Component,
   StyleSheet,
   View,
   Text,
   TabBarIOS,
   TouchableHighlight,
-  PropTypes,
   ListView,
   Image
 } from 'react-native';
+import { Component, PropTypes } from 'react';
 import colorLookupTable from '../utils/colorLookUp';
 import { buildLiveDataList } from '../utils/dataSourceFactory';
 
