@@ -54,32 +54,18 @@ export default class Tabbar extends Component {
 
   render () {
     const { tabName } = this.props;
-
     return (
-        <Icon.ToolbarAndroid 
-          title="Live"
-          navIconName="ios-cloud"
-          overflowIconName="ios-cloud"
-          selected={tabName === LIVE}
-          onPress={this.onTapTab.bind(this, LIVE)} 
-          >
-          {this._renderLiveTrackWork()}
-        </Icon.ToolbarAndroid>
-        /*
-        <Icon.ToolbarAndroid 
-          title="Comming"
-          navIconName="ios-cloud"
-          overflowIconName="ios-cloud"
-          selected={tabName === COMMING}
-          onPress={this.onTapTab.bind(this, COMMING)} 
-          >
-          {this._renderCommingTrackWork()}
-        </Icon.ToolbarAndroid>*/
+      <View style={styles.container}>
+        {this._renderCommingTrackWork()}
+      </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   tabContent: {
     flex: 1,
     flexDirection: 'column'
