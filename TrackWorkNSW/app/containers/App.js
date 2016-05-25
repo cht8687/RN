@@ -7,9 +7,8 @@ import {
 } from 'react-native';
 import React, { Component, PropTypes } from 'react';
 import {
-  Router,
-  Route,
-  Schema
+  Scene,
+  Router
 } from 'react-native-router-flux';
 import Tabbar from '../components/Tabbar';
 
@@ -22,10 +21,8 @@ export default class App extends Component {
   render() {
 
     return (
-
-      // Now has router
-      <Router hideNavBar={false}>
-        <Route name="Tabbar" schema="default" component={Tabbar} title="Live Info" initial />
+      <Router>
+        <Scene key="Tabbar" component={Tabbar} title="Live Info" initial />
       </Router>
     );
   }

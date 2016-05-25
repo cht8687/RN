@@ -1,7 +1,8 @@
 'use strict'
 
 import {
-  StatusBarIOS
+  StatusBarIOS,
+  Platform
 } from 'react-native';
 import React, { Component } from 'react';
 import { createStore, applyMiddleware } from 'redux';
@@ -25,7 +26,7 @@ export default class Root extends Component {
   render () {
     return (
       <Provider store={store}>
-        {() => <App />}
+        <App />
       </Provider>
     )
   }
