@@ -1,6 +1,6 @@
 'use strict'
 
-import React, {
+import {
   StyleSheet,
   View,
   Text,
@@ -11,7 +11,7 @@ import {
   LIVE,
   COMMING
 } from '../constant/tab';
-import { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Live from './Live';
 import Incomming from './Incomming';
 import Icon from 'react-native-vector-icons/Ionicons';

@@ -1,9 +1,9 @@
 'use strict'
 
-import React, {
+import {
   StatusBarIOS
 } from 'react-native';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers/index';
