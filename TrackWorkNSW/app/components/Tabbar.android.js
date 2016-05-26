@@ -52,11 +52,19 @@ export default class Tabbar extends Component {
     );
   }
 
-  render () {
+  renderContent() {
     const { tabName } = this.props;
+    if (tabName == LIVE) {
+      {this._renderCommingTrackWork()}
+    } else if (tabName == COMMING) {
+      {this._renderCommingTrackWork()}
+    }
+  }
+
+  render () {
     return (
       <View style={styles.container}>
-        {this._renderCommingTrackWork()}
+        {this.renderContent()}
       </View>
     )
   }

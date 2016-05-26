@@ -9,3 +9,6 @@ export default class Api {
      //.then(res => window.console.log(res))
   }
 }
+
+
+// todo: use redux middleware for api
