@@ -6,17 +6,17 @@ import {
   Text,
   TabBarIOS,
   TouchableHighlight,
-} from 'react-native';
+} from 'react-native'
 import {
   LIVE,
   COMMING
 } from '../constant/tab';
-import React, { Component, PropTypes } from 'react';
-import Live from './Live';
-import Incomming from './Incomming';
-import Icon from 'react-native-vector-icons/Ionicons';
-import { bindActionCreators } from 'redux';
-import allActions from '../actions';
+import React, { Component, PropTypes } from 'react'
+import Live from './Live'
+import Incomming from './Incomming'
+import Icon from 'react-native-vector-icons/Ionicons'
+import { bindActionCreators } from 'redux'
+import allActions from '../actions'
 import { connect } from 'react-redux'
 
 export default class Tabbar extends Component {
@@ -27,11 +27,11 @@ export default class Tabbar extends Component {
 
   onTapTab (tab) {
     const { actions } = this.props;
-    actions.changeTab(tab);
+    actions.changeTab(tab)
   }
 
   _renderLiveTrackWork() {
-    const { actions, newsData } = this.props;
+    const { actions, newsData } = this.props
     return (
       <Live
         actions={actions}
@@ -42,7 +42,7 @@ export default class Tabbar extends Component {
   }
 
   _renderCommingTrackWork() {
-    const { actions, inCommingNewsData } = this.props;
+    const { actions, inCommingNewsData } = this.props
     return (
       <Incomming
         actions={actions}
@@ -53,7 +53,7 @@ export default class Tabbar extends Component {
   }
 
   render () {
-    const { tabName } = this.props;
+    const { tabName } = this.props
 
     return (
       <TabBarIOS>
@@ -109,13 +109,13 @@ function mapStateToProps(state) {
     tabName: state.tab.tabName,
     newsData: state.news.newsData,
     inCommingNewsData: state.news.inCommingNewsData
-  };
+  }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(allActions, dispatch)
-  };
+  }
 }
 
 export default connect(

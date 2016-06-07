@@ -6,28 +6,28 @@ import {
   Text,
   ToolbarAndroid,
   TouchableHighlight,
-} from 'react-native';
+} from 'react-native'
 import {
   LIVE,
   COMMING
-} from '../constant/tab';
-import React, { Component, PropTypes } from 'react';
-import Live from './Live';
-import Incomming from './Incomming';
-import Icon from 'react-native-vector-icons/Ionicons';
-import { bindActionCreators } from 'redux';
-import allActions from '../actions';
+} from '../constant/tab'
+import React, { Component, PropTypes } from 'react'
+import Live from './Live'
+import Incomming from './Incomming'
+import Icon from 'react-native-vector-icons/Ionicons'
+import { bindActionCreators } from 'redux'
+import allActions from '../actions'
 import { connect } from 'react-redux'
 
 export default class Tabbar extends Component {
 
   constructor(props) {
-    super(props);
+    super(props)
   }
 
   onTapTab (tab) {
     const { actions } = this.props;
-    actions.changeTab(tab);
+    actions.changeTab(tab)
   }
 
   _renderLiveTrackWork() {
@@ -42,7 +42,7 @@ export default class Tabbar extends Component {
   }
 
   _renderCommingTrackWork() {
-    const { actions, inCommingNewsData } = this.props;
+    const { actions, inCommingNewsData } = this.props
     return (
       <Incomming
         actions={actions}
@@ -53,7 +53,7 @@ export default class Tabbar extends Component {
   }
 
   renderContent() {
-    const { tabName } = this.props;
+    const { tabName } = this.props
     if (tabName == LIVE) {
       {this._renderCommingTrackWork()}
     } else if (tabName == COMMING) {
@@ -96,19 +96,18 @@ Tabbar.propTypes = {
   inCommingNewsData: PropTypes.object
 }
 
-
 function mapStateToProps(state) {
   return {
     tabName: state.tab.tabName,
     newsData: state.news.newsData,
     inCommingNewsData: state.news.inCommingNewsData
-  };
+  }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(allActions, dispatch)
-  };
+  }
 }
 
 export default connect(
